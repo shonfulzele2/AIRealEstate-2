@@ -112,6 +112,19 @@
     opacity: 1 !important;
   }
   
+  /* Fix for elements that should always be visible */
+  .solutions-panel {
+    @apply !opacity-100 !translate-y-0;
+  }
+  
+  .integration-panel {
+    @apply !opacity-100 !translate-y-0;
+  }
+  
+  .human-skill-card {
+    @apply !opacity-100 !translate-y-0;
+  }
+  
   .animate-fadeIn {
     @apply animate-[fadeIn_1.5s_ease-out_forwards];
   }

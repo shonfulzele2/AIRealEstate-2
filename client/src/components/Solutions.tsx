@@ -170,7 +170,7 @@ const Solutions = () => {
           </p>
         </div>
         
-        <div ref={carouselRef} className="opacity-0 transform translate-y-6 transition-all duration-1000">
+        <div ref={carouselRef} className="solutions-panel">
           {/* Featured solution detail */}
           <div className="bg-white rounded-xl shadow-xl overflow-hidden mb-12">
             <div className="p-8 relative">
@@ -180,28 +180,30 @@ const Solutions = () => {
               
               <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
-                  <div className="inline-flex items-center justify-center h-20 w-20 rounded-full bg-primary/10 text-primary mb-6">
-                    {(() => {
-                      const Icon = solutions[activeSolution].icon;
-                      return <Icon className="h-10 w-10" />;
-                    })()}
+                  <div className="flex items-center mb-6">
+                    <div className="h-20 w-20 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                      {(() => {
+                        const Icon = solutions[activeSolution].icon;
+                        return <Icon className="h-10 w-10 text-primary" />;
+                      })()}
+                    </div>
+                    <h3 className="text-3xl font-bold text-secondary">{solutions[activeSolution].title}</h3>
                   </div>
-                  <h3 className="text-3xl font-bold text-secondary mb-4">{solutions[activeSolution].title}</h3>
+                  
                   <p className="text-lg text-gray-600 mb-6">{solutions[activeSolution].benefit}</p>
                   
-                  <div className="bg-accent p-5 rounded-lg">
+                  <div className="bg-accent p-5 rounded-lg shadow-md">
                     <div className="flex items-end gap-3 mb-2">
                       <span className="text-4xl font-bold text-primary">{solutions[activeSolution].stats}</span>
                       <span className="text-gray-700 pb-1">{solutions[activeSolution].detail}</span>
                     </div>
-                    <div className="w-full bg-gray-200 h-3 rounded-full mt-2">
+                    <div className="w-full bg-gray-200 h-3 rounded-full mt-2 overflow-hidden">
                       <div 
-                        className="bg-primary h-3 rounded-full"
+                        className="bg-primary h-3 rounded-full animate-grow"
                         style={{ 
                           width: solutions[activeSolution].stats.includes('%') 
                             ? solutions[activeSolution].stats 
-                            : '75%',
-                          animation: "grow 1s ease-out forwards"
+                            : '75%'
                         }}
                       ></div>
                     </div>
@@ -226,8 +228,16 @@ const Solutions = () => {
                       </li>
                     </ul>
                     
+                    <div className="mt-4 mb-6 h-24">
+                      <LottieAnimation 
+                        animationData={automationAnimation} 
+                        loop={true} 
+                        autoplay={true} 
+                      />
+                    </div>
+                    
                     <Button 
-                      className="mt-6 bg-white text-secondary hover:bg-white/90"
+                      className="mt-2 bg-white text-secondary hover:bg-white/90"
                       asChild
                     >
                       <a href="#contact">Schedule Demo</a>

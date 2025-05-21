@@ -10,6 +10,8 @@ import {
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { LottieAnimation } from "./LottieAnimation";
+import realEstateHouseAnimation from "../assets/animations/real-estate-house.json";
 
 const TeamAdoption = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -149,13 +151,19 @@ const TeamAdoption = () => {
         <div className="p-8 bg-white rounded-xl shadow-lg overflow-hidden">
           <div className="flex flex-col lg:flex-row items-center">
             <div className="lg:w-1/2 mb-8 lg:mb-0 lg:pr-10 relative">
-              <div className="relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1581092787765-e3feb951d987?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80" 
-                  alt="Real estate professionals collaborating" 
-                  className="rounded-lg shadow-md w-full object-cover transform transition-all duration-700 hover:scale-[1.02]" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-secondary/40 to-transparent rounded-lg"></div>
+              <div className="relative bg-white p-4 rounded-lg shadow-md">
+                <div className="h-64 flex items-center justify-center">
+                  <LottieAnimation 
+                    animationData={realEstateHouseAnimation} 
+                    loop={true} 
+                    autoplay={true}
+                    className="w-full h-full"
+                  />
+                </div>
+                <div className="text-center mt-4 bg-gradient-to-r from-primary/20 to-secondary/20 p-3 rounded">
+                  <h3 className="text-xl font-semibold text-secondary">Real Estate + AI Automation</h3>
+                  <p className="text-gray-600">Technology that empowers your agents</p>
+                </div>
               </div>
               
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-full blur-xl"></div>

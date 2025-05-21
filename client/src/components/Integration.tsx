@@ -13,6 +13,8 @@ import {
   ChevronRight
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { LottieAnimation } from "./LottieAnimation";
+import connectionAnimation from "../assets/animations/connection.json";
 
 const Integration = () => {
   const [activePhase, setActivePhase] = useState(0);
@@ -261,20 +263,31 @@ const Integration = () => {
                     </div>
                   </div>
                   
-                  <div className="mt-3 pl-11 border-l-2 border-dashed border-gray-200">
-                    <div className="text-sm text-gray-600 space-y-3">
-                      <p className="flex items-start">
-                        <Check className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                        <span>Automatically update property status in your CRM when listings change</span>
-                      </p>
-                      <p className="flex items-start">
-                        <Check className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                        <span>Send automated follow-ups when leads reach specific stages</span>
-                      </p>
-                      <p className="flex items-start">
-                        <Check className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                        <span>Generate analytics reports to identify your highest-value activities</span>
-                      </p>
+                  <div className="mt-3">
+                    <div className="h-24 mb-3">
+                      <LottieAnimation 
+                        animationData={connectionAnimation} 
+                        loop={true} 
+                        autoplay={true}
+                        className="w-full"
+                      />
+                    </div>
+                    
+                    <div className="pl-11 border-l-2 border-dashed border-gray-200">
+                      <div className="text-sm text-gray-600 space-y-3">
+                        <p className="flex items-start">
+                          <Check className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                          <span>Automatically update property status in your CRM when listings change</span>
+                        </p>
+                        <p className="flex items-start">
+                          <Check className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                          <span>Send automated follow-ups when leads reach specific stages</span>
+                        </p>
+                        <p className="flex items-start">
+                          <Check className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                          <span>Generate analytics reports to identify your highest-value activities</span>
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
