@@ -160,7 +160,7 @@ const Integration = () => {
         {/* Interactive integration showcase */}
         <div 
           ref={integrationRef} 
-          className="bg-white rounded-xl shadow-lg p-8 mb-16 opacity-0 transform translate-y-6 transition-all duration-1000"
+          className="bg-white rounded-xl shadow-lg p-8 mb-16 opacity-0 transform translate-y-6 transition-all duration-1000 integration-panel"
         >
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Left side: Integration selector */}

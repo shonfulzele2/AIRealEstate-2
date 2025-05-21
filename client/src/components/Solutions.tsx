@@ -11,6 +11,9 @@ import {
   ArrowRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LottieAnimation } from "./LottieAnimation";
+import automationAnimation from "../assets/animations/automation.json";
+import realEstateHouseAnimation from "../assets/animations/real-estate-house.json";
 
 // Interactive Solution Card component with animation
 const SolutionCard = ({ 
