@@ -263,17 +263,17 @@ const Integration = () => {
                     </div>
                   </div>
                   
-                  <div className="mt-3">
-                    <div className="h-24 mb-3">
+                  <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                    <div className="h-32">
                       <LottieAnimation 
                         animationData={connectionAnimation} 
                         loop={true} 
                         autoplay={true}
-                        className="w-full"
+                        className="w-full h-full"
                       />
                     </div>
                     
-                    <div className="pl-11 border-l-2 border-dashed border-gray-200">
+                    <div className="pl-4 md:pl-6 border-l-2 border-dashed border-gray-200">
                       <div className="text-sm text-gray-600 space-y-3">
                         <p className="flex items-start">
                           <Check className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
