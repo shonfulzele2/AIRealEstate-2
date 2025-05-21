@@ -1,10 +1,20 @@
 import { 
   AlertTriangle, 
   CheckCircle,
-  XCircle 
+  XCircle,
+  Users,
+  Heart,
+  Brain,
+  Sparkles,
+  ArrowRight
 } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
 
 const TeamAdoption = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const cardsRef = useRef<HTMLDivElement>(null);
+  
   const challenges = [
     "Fear that AI will replace agent jobs",
     "Resistance to learning new technology",
@@ -19,97 +29,178 @@ const TeamAdoption = () => {
     "Resources for developing AI skills at every career stage"
   ];
 
-  const humanExcellence = [
+  const humanSkills = [
     {
       title: "Relationship Building",
-      description: "Strengthening personal connections with clients"
+      description: "Strengthening personal connections with clients",
+      icon: Heart,
+      color: "pink"
     },
     {
       title: "Negotiation Skills",
-      description: "Securing the best deals for clients"
+      description: "Securing the best deals for clients",
+      icon: Sparkles,
+      color: "yellow"
     },
     {
       title: "Trust & Empathy",
-      description: "Understanding client needs on a deeper level"
+      description: "Understanding client needs on a deeper level",
+      icon: Users,
+      color: "blue"
     },
     {
       title: "Local Expertise",
-      description: "Providing insights no AI can match"
+      description: "Providing insights no AI can match",
+      icon: Brain,
+      color: "purple"
     }
   ];
+  
+  // Animation for elements when they come into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (cardsRef.current) {
+      const cards = cardsRef.current.querySelectorAll('.human-skill-card');
+      cards.forEach(card => observer.observe(card));
+    }
+    
+    return () => {
+      if (cardsRef.current) {
+        const cards = cardsRef.current.querySelectorAll('.human-skill-card');
+        cards.forEach(card => observer.unobserve(card));
+      }
+    };
+  }, []);
+  
+  // Rotate through skills automatically
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % humanSkills.length);
+    }, 3000);
+    
+    return () => clearInterval(interval);
+  }, [humanSkills.length]);
 
   return (
-    <section id="team" className="section-padding bg-accent overflow-hidden">
+    <section id="team" className="section-padding bg-gradient-to-b from-accent to-white overflow-hidden">
       <div className="container-section">
-        <div className="text-center mb-16">
-          <h2 className="section-heading">Team Adoption & Change Management</h2>
-          <p className="section-subheading">
-            Successful AI implementation requires team buy-in. Our human-centric approach ensures your agents embrace new technology with confidence.
+        <div className="text-center mb-12">
+          <h2 className="section-heading mb-2">Human-Centered AI Adoption</h2>
+          <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Technology that empowers your team instead of replacing them
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          <div className="bg-white p-8 rounded-xl shadow-md">
-            <div className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-red-100 text-red-600 mb-4">
-              <AlertTriangle className="h-6 w-6" />
+        {/* Interactive comparison cards */}
+        <div className="flex flex-col lg:flex-row gap-6 mb-16 relative">
+          <div className="lg:w-1/2 bg-white p-6 rounded-xl shadow-md transform transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
+            <div className="flex items-center mb-4">
+              <div className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-red-100 text-red-600 mr-4">
+                <AlertTriangle className="h-6 w-6" />
+              </div>
+              <h3 className="text-xl font-semibold">Common Concerns</h3>
             </div>
-            <h3 className="text-2xl font-semibold mb-6">Common Adoption Challenges</h3>
-            <p className="text-gray-600 mb-6">
-              We understand the barriers to new technology adoption and address them head-on:
-            </p>
             
-            <ul className="space-y-4">
+            <ul className="space-y-4 mt-6">
               {challenges.map((challenge, index) => (
-                <li key={index} className="flex items-start">
-                  <XCircle className="text-red-500 mt-1 mr-3 h-5 w-5 flex-shrink-0" />
-                  <span>{challenge}</span>
+                <li key={index} className="flex items-center p-3 bg-gray-50 rounded-lg transition-all duration-300 hover:bg-red-50 hover:shadow-sm">
+                  <XCircle className="text-red-500 mr-3 h-5 w-5 flex-shrink-0" />
+                  <span className="text-gray-700">{challenge}</span>
                 </li>
               ))}
             </ul>
           </div>
           
-          <div className="bg-white p-8 rounded-xl shadow-md">
-            <div className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-green-100 text-green-600 mb-4">
-              <CheckCircle className="h-6 w-6" />
+          <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden lg:flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white shadow-lg z-10">
+            <ArrowRight className="h-5 w-5" />
+          </div>
+          
+          <div className="lg:w-1/2 bg-white p-6 rounded-xl shadow-md transform transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
+            <div className="flex items-center mb-4">
+              <div className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-green-100 text-green-600 mr-4">
+                <CheckCircle className="h-6 w-6" />
+              </div>
+              <h3 className="text-xl font-semibold">Our Solutions</h3>
             </div>
-            <h3 className="text-2xl font-semibold mb-6">Our Human-Centric Approach</h3>
-            <p className="text-gray-600 mb-6">
-              We focus on how AI empowers agents rather than replaces them, freeing time for the human skills that truly matter:
-            </p>
             
-            <ul className="space-y-4">
+            <ul className="space-y-4 mt-6">
               {approaches.map((approach, index) => (
-                <li key={index} className="flex items-start">
-                  <CheckCircle className="text-green-500 mt-1 mr-3 h-5 w-5 flex-shrink-0" />
-                  <span>{approach}</span>
+                <li key={index} className="flex items-center p-3 bg-gray-50 rounded-lg transition-all duration-300 hover:bg-green-50 hover:shadow-sm">
+                  <CheckCircle className="text-green-500 mr-3 h-5 w-5 flex-shrink-0" />
+                  <span className="text-gray-700">{approach}</span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
         
-        <div className="flex flex-col lg:flex-row items-center gap-8">
-          <div className="lg:w-1/2">
-            <img 
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=800" 
-              alt="Real estate team collaboration" 
-              className="rounded-xl shadow-lg w-full" 
-            />
-          </div>
-          
-          <div className="lg:w-1/2">
-            <h3 className="text-2xl font-bold text-secondary mb-6">Emphasizing Human Excellence</h3>
-            <p className="text-gray-600 mb-8">
-              Our AI solutions handle routine tasks so your agents can focus on what truly differentiates them in the market:
-            </p>
+        {/* Human excellence showcase */}
+        <div className="p-8 bg-white rounded-xl shadow-lg overflow-hidden">
+          <div className="flex flex-col lg:flex-row items-center">
+            <div className="lg:w-1/2 mb-8 lg:mb-0 lg:pr-10 relative">
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1581092787765-e3feb951d987?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80" 
+                  alt="Real estate professionals collaborating" 
+                  className="rounded-lg shadow-md w-full object-cover transform transition-all duration-700 hover:scale-[1.02]" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-secondary/40 to-transparent rounded-lg"></div>
+              </div>
+              
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-full blur-xl"></div>
+            </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {humanExcellence.map((item, index) => (
-                <div key={index} className="p-4 bg-white rounded-lg shadow-sm">
-                  <h4 className="font-semibold mb-2">{item.title}</h4>
-                  <p className="text-sm text-gray-600">{item.description}</p>
-                </div>
-              ))}
+            <div className="lg:w-1/2 lg:pl-10">
+              <h3 className="text-2xl font-bold text-secondary mb-3">Human Skills AI Can't Replace</h3>
+              <p className="text-gray-600 mb-8">
+                Our platform handles repetitive tasks so your team can focus on what makes them exceptional:
+              </p>
+              
+              <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {humanSkills.map((skill, index) => (
+                  <div 
+                    key={index} 
+                    className={cn(
+                      "human-skill-card p-4 rounded-lg transition-all duration-500 transform opacity-0 translate-y-4",
+                      activeIndex === index ? "ring-2 ring-primary shadow-md" : "bg-gray-50 hover:bg-gray-100",
+                      index % 2 === 0 ? "delay-100" : "delay-300"
+                    )}
+                    onClick={() => setActiveIndex(index)}
+                  >
+                    <div className="flex items-start">
+                      <div className={
+                        skill.color === "pink" 
+                          ? "inline-flex items-center justify-center h-10 w-10 rounded-full bg-pink-100 text-pink-600 mr-3" 
+                          : skill.color === "yellow" 
+                            ? "inline-flex items-center justify-center h-10 w-10 rounded-full bg-yellow-100 text-yellow-600 mr-3" 
+                            : skill.color === "blue" 
+                              ? "inline-flex items-center justify-center h-10 w-10 rounded-full bg-blue-100 text-blue-600 mr-3" 
+                              : "inline-flex items-center justify-center h-10 w-10 rounded-full bg-purple-100 text-purple-600 mr-3"
+                      }>
+                        {(() => {
+                          const Icon = skill.icon;
+                          return <Icon className="h-5 w-5" />;
+                        })()}
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-1">{skill.title}</h4>
+                        <p className="text-sm text-gray-600">{skill.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
