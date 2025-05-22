@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import { FloatingActionButton } from "@/components/FloatingActionButton";
 
 function Router() {
   return (
@@ -21,6 +22,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
+        <FloatingActionButton />
         <Router />
       </TooltipProvider>
     </QueryClientProvider>

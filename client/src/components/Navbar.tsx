@@ -164,11 +164,11 @@ const Navbar = () => {
             <div 
               className="mt-3 px-4 py-3 bg-primary/5 rounded-lg text-primary font-medium cursor-pointer hover:bg-primary/10 transition-colors duration-200"
               onClick={() => {
-                scrollToSection('contact');
+                setIsDemoFormOpen(true);
                 setIsMenuOpen(false);
               }}
             >
-              Contact Us
+              Demo Call
             </div>
           </div>
         </div>
