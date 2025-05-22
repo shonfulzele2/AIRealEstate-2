@@ -2,12 +2,12 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { 
-  MessageCircle, 
   Phone, 
   Headphones, 
   X,
   Plus
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import {
   Dialog,
   DialogContent,
@@ -69,7 +69,7 @@ export const FloatingActionButton = () => {
               className="bg-green-500 hover:bg-green-600 h-12 w-12 rounded-full shadow-lg transition-transform hover:scale-105"
               aria-label="WhatsApp"
             >
-              <MessageCircle className="h-6 w-6 text-white" />
+              <FaWhatsapp className="h-6 w-6 text-white" />
             </Button>
             
             <Button
