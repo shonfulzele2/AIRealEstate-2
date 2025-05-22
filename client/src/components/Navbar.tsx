@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Building, ChevronRight } from "lucide-react";
+import { Menu, X, Building, ChevronRight, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { DemoCallForm } from "./DemoCallForm";
 
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
@@ -19,6 +20,7 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
   const [location] = useLocation();
+  const [isDemoFormOpen, setIsDemoFormOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -83,7 +85,7 @@ const Navbar = () => {
                 <div className="bg-primary/10 p-2 rounded-lg group-hover:bg-primary/20 transition-colors duration-300 mr-3">
                   <Building className="h-6 w-6 text-primary" />
                 </div>
-                <span>RealEstateAI</span>
+                <span>Proper Automations</span>
               </div>
             </div>
           </div>
@@ -103,17 +105,17 @@ const Navbar = () => {
             ))}
           </nav>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3 md:space-x-4">
             <Button 
               variant="default" 
               className="bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg transition-all duration-300 group"
-              onClick={() => scrollToSection('contact')}
+              onClick={() => setIsDemoFormOpen(true)}
             >
-              <span>Contact Us</span>
-              <ChevronRight className="ml-1 h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+              <span className="mr-1">Demo Call</span>
+              <Phone className="h-4 w-4" />
             </Button>
             
-            <div className="md:hidden">
+            <div className="md:hidden ml-2">
               <Button
                 variant="ghost"
                 size="icon"
@@ -125,6 +127,9 @@ const Navbar = () => {
               </Button>
             </div>
           </div>
+          
+          {/* Demo Call Form Dialog */}
+          <DemoCallForm isOpen={isDemoFormOpen} onClose={() => setIsDemoFormOpen(false)} />
         </div>
 
         {/* Mobile menu - animated dropdown */}

@@ -78,7 +78,7 @@ const Solutions = () => {
       icon: MessageCircle,
       title: "Automated Lead Follow-up",
       benefit: "Never miss a lead opportunity with AI-powered follow-ups",
-      stats: "42%",
+      stats: "4x",
       detail: "Increase in successful conversions"
     },
     {
@@ -106,14 +106,14 @@ const Solutions = () => {
       icon: Database,
       title: "CRM Integration",
       benefit: "Automate data entry and keep client records accurate",
-      stats: "60%",
+      stats: "96%",
       detail: "Reduction in manual data entry"
     },
     {
       icon: PieChart,
-      title: "Performance Analytics",
+      title: "Performance Analysis",
       benefit: "Get actionable insights from your business data",
-      stats: "28%",
+      stats: "4x",
       detail: "Better-informed decisions"
     }
   ];

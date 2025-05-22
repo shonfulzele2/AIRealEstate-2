@@ -59,11 +59,11 @@ const Integration = () => {
       connectsTo: ["Voice AI", "Customer Service", "Lead Qualification", "FAQ"]
     },
     { 
-      name: "Zapier", 
+      name: "Go High Level", 
       icon: ArrowLeftRight,
-      color: "#FF4A00", 
-      description: "Connect with thousands of apps without any coding knowledge required",
-      connectsTo: ["Email Marketing", "CRM", "Task Management", "Lead Capture"]
+      color: "#1E90FF", 
+      description: "All-in-one marketing platform designed for agencies and businesses",
+      connectsTo: ["Email Marketing", "CRM", "SMS", "Funnels", "Automation"]
     }
   ];
 
