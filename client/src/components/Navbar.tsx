@@ -75,15 +75,15 @@ const Navbar = () => {
       isScrolled ? "scrolled" : ""
     )}>
       <div className="container-section">
-        <div className="flex justify-between items-center py-3">
+        <div className="flex justify-between items-center py-2 md:py-3">
           <div className="flex items-center">
             <div 
               onClick={() => scrollToSection('home')}
               className="cursor-pointer"
             >
-              <div className="text-secondary font-bold text-2xl flex items-center group">
-                <div className="bg-primary/10 p-2 rounded-lg group-hover:bg-primary/20 transition-colors duration-300 mr-3">
-                  <Building className="h-6 w-6 text-primary" />
+              <div className="text-secondary font-bold text-xl md:text-2xl flex items-center group">
+                <div className="bg-primary/10 p-1.5 md:p-2 rounded-lg group-hover:bg-primary/20 transition-colors duration-300 mr-2 md:mr-3">
+                  <Building className="h-5 w-5 md:h-6 md:w-6 text-primary" />
                 </div>
                 <span>Proper Automations</span>
               </div>
@@ -108,11 +108,12 @@ const Navbar = () => {
           <div className="flex items-center space-x-3 md:space-x-4">
             <Button 
               variant="default" 
-              className="bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg transition-all duration-300 group"
+              size="sm"
+              className="bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg transition-all duration-300 group text-xs md:text-sm px-2 md:px-4 py-1 md:py-2"
               onClick={() => setIsDemoFormOpen(true)}
             >
               <span className="mr-1">Demo Call</span>
-              <Phone className="h-4 w-4" />
+              <Phone className="h-3 w-3 md:h-4 md:w-4" />
             </Button>
             
             <div className="md:hidden ml-2">
